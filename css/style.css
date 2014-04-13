@@ -1,0 +1,25 @@
+body{
+	padding-top:90px;
+	font-family:"open sans", sans-serif;
+	color:#333;
+}
+
+.no-files{
+	width:80%;
+	margin:auto;
+	border:1px dashed #ccc;
+	border-radius:8px;
+	padding:20px;
+}
+#main{
+	display:none;
+}
+#username{
+	display:none;
+}
+#doc-table a.dropdown-toggle .fa{
+	font-size:18px;
+}
+#doc-table td>a>span.fa{
+	font-size:18px;
+}

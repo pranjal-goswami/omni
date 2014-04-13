@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Omni Converter Web Client</title>
+<!-- le Bootstrap -->
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+<!-- le Fontawesome -->
+<link rel="stylesheet" type="text/css" href="./font-awesome-4.0.3/css/font-awesome.css"/>
+<!-- le Growl -->
+<link rel="stylesheet" type="text/css" href="./css/jquery.growl.css"/>
+
+<!-- le Document Stylesheet -->
+<link rel="stylesheet" href="./css/style.css" />
+<!-- le Fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<header style="display:none;">
+</header>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="./"> <strong>OMNICONVERTER</strong></a>
+    </div>
+    <div class="collapse navbar-collapse hidden" id="username">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> &nbsp; <span id="usr_name">pranjal.b.goswami@gmail.com</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-toggle="modal" data-target="#instructionsModal">
+				<span class="glyphicon glyphicon-exclamation-sign"></span> &nbsp; Instructions
+			</a></li>
+            <li><a href="http://omniconverter.palantir.com/api/" target="_blank">
+				<span class="glyphicon glyphicon-file"></span> &nbsp; API Documentation
+			</a></li>
+            <li class="divider"></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> &nbsp; Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div id="login" class="container">
+<div class="text-center col-md-4 col-md-offset-4">
+	<img src="./img/palantirlogo.svg" style="width:200px; background:#428bca; border-radius:8px;" />
+	<br /><br />
+	<div id="login-failed" class="alert alert-danger" style="display:none;"></div>
+	<form class="form-horizontal" role="form" method="post" id="login-form">
+	  <div class="form-group">
+		<div class="col-sm-10 col-sm-offset-1">
+		  <input type="text" class="form-control" id="server_url" placeholder="Server URL">
+		</div>
+	  </div>
+	  <div class="form-group">
+		<div class="col-sm-10 col-sm-offset-1">
+		  <input type="text" class="form-control" id="user_email" placeholder="Email">
+		</div>
+	  </div>
+	   <div class="form-group">
+		<div class="col-sm-10 col-sm-offset-1">
+		  <input type="password" class="form-control" id="user_pw" placeholder="Password">
+		</div>
+	  </div>
+	   <div class="form-group">
+		<div class="col-sm-10 col-sm-offset-1">
+		  <button type="submit" class="btn btn-primary col-md-12 " id="submit-btn">Submit</button>
+		</div>
+	  </div>
+	</form>
+</div>
+</div>
+
+<div id="main" class="container">
+<form id="upload-form" class="hidden" method="POST" enctype="mulitpart/form-data">
+	<div class="upload-buttons">
+		<input id="upload-input" type="file" name="file" size="filesize">
+	</div>
+</form>	
+<form id="replace-form" class="hidden" method="POST" enctype="mulitpart/form-data">
+	<div class="replace-buttons">
+		<input id="replace-input" type="file" name="file" size="filesize">
+	</div>
+</form>	
+	<div class="row">
+		<div class="col-md-3">
+			<img src="./img/palantirlogo.svg" id="login-logo" style="width:90%; margin:auto; border-radius:5px; background:#428bca;" />
+		<br /><br />
+		<ul class="list-unstyled">
+			<li>
+				<table class="table" id="user-info" style="padding-left:0px;">
+					<tr>
+						<td><strong>Last Minute</strong></td>
+						<td>: &nbsp; <span id="min-usage">460</span>/1000</td>
+					</tr>
+					<tr>
+						<td><strong>Last Day</strong></td>
+						<td>: &nbsp; <span id="day-usage">5820</span>/100000</td>
+					</tr>
+					<tr>
+						<td><strong>Total</strong></td>
+						<td>: &nbsp; <span id="total-usage">582000</span></td>
+					</tr>
+				</table>
+			</li>
+			<hr />
+			<li class="text-center">
+				<div class="btn-group btn-block">
+				  <button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">
+					<span class="fa fa-upload"></span> &nbsp; Upload 
+				  </button>
+				  <ul class="dropdown-menu text-left upload" role="menu" style="width:100%;">
+					<li><a href="#"><span class="fa fa-code"></span> &nbsp; &nbsp; <span class="format">XML</span></a></li>
+					<li><a href="#"><span class="fa fa-html5"></span> &nbsp; &nbsp; <span class="format">HTML</span></a></li>
+					<li><a href="#"><span class="fa">{ }</span> &nbsp; &nbsp; <span class="format">JSON</span></a></li>
+					<li><a href="#"><span class="fa fa-text-height"></span> &nbsp; &nbsp; <span class="format">TXT</span></a></li>
+					<li><a href="#"><span class="fa">x,</span> &nbsp; &nbsp; <span class="format">CSV</span></a></li>
+					<li><a href="#"><span class="fa fa-tasks"></span> &nbsp; &nbsp; <span class="format">SQL</span></a></li>
+				  </ul>
+				</div>
+			</li>
+			
+		</ul>
+
+		</div>
+		<div class="col-md-8">
+		<div class="col-md-12" id="notification-list"></div>
+			<legend>Documents 
+				<div class="btn-group pull-right">
+				  <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown">
+					<span class="glyphicon glyphicon-download-alt"></span> &nbsp; Download <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu download" role="menu">
+					<li><a href="#"><span class="fa fa-code"></span> &nbsp; &nbsp; <span class="format">XML</span></a></li>
+					<li><a href="#"><span class="fa fa-html5"></span> &nbsp; &nbsp; <span class="format">HTML</span></a></li>
+					<li><a href="#"><span class="fa">{ }</span> &nbsp; &nbsp; <span class="format">JSON</span></a></li>
+					<li><a href="#"><span class="fa fa-text-height"></span> &nbsp; &nbsp; <span class="format">TXT</span></a></li>
+					<li><a href="#"><span class="fa">x,</span> &nbsp; &nbsp; <span class="format">CSV</span></a></li>
+					<li><a href="#"><span class="fa fa-tasks"></span> &nbsp; &nbsp; <span class="format">SQL</span></a></li>
+				  </ul>
+				</div>
+				<a href="#" id="delete-button" class="pull-right btn btn-xs btn-danger" style="margin-right:10px;"><span class="glyphicon glyphicon-trash"></span> &nbsp; Delete</a>
+			</legend>
+			<div class="no-files">
+				<h4>You have no Documents on the server. Try uploading a graph.</h4>
+			</div>
+			
+			<table class="table table-hover table-responsive " id="doc-table">
+			<thead>
+				<th><input class="checkbox" id="checkbox-toggle-button" type="checkbox" /></th>
+				<th>FileName</th>
+				<th>Size</th>
+				<th>Last Modified</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</thead>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- Le Modals -->
+<div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header alert-info">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="instructionsModalLabel">OMNICONVERTER</h4>
+      </div>
+      <div class="modal-body">
+            <p>This system is designed to store directed acyclic graph (DAG) data with the ability to import from and export to a variety of file formats.</p>
+            <p style="padding-bottom:20px;">It supports XML, HTML, TXT, SQL, JSON, and CSV file formats, but be warned, each of these file formats has a very specific way of representing graph data.  Before starting, carefully read the <a href="http://omniconverter.palantir.com/api/#fileformats" class="underline">file format documentation</a> and look at the sample upload files that were linked to in our initial email.<br></p>
+            <legend class="text-info"><h4>INSTRUCTIONS</h4></legend>
+            <p style="padding-top: 20px;">You have been given access to this web based client, an executable Java archive, and a copy of the source code. <strong>Your task is to identify issues with the system as well as suggesting potential solutions.</strong></p>
+            <p>There are no restrictions on how you should be testing the system, nor restrictions on the problems you should be looking for.  However, some problems will be very difficult to identify without inspecting source code.</p>
+            <p id="last-paragraph">Access to the VM you have been assigned will be revoked after 5 days, but you can continue, running the server locally, for as long as you need.  Once you are finished, you should <a href="mailto:servergame-report@palantir.com" class="underline">email us</a> your report.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Le Scripts -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="./js/jquery.cookie.js"></script>
+<script type="text/javascript" src="./js/jquery.growl.js"></script>
+<script type="text/javascript" src="./js/jquery.form.min.js"></script>
+<script type="text/javascript" src="./js/omniconverter.js"></script>
+
+<!-- Scripts -->
+</body>
+</html>

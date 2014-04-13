@@ -1,0 +1,466 @@
+@font-face {
+  font-family: 'din';
+  src: url('../fonts/DINNextLTW04-Light.ttf');
+}
+html,
+body {
+  height: 100%;
+  overflow-x: none;
+  min-width: 650px;
+  color: #4d4d4d;
+}
+body > #login {
+  width: 100%;
+  height: 100%;
+}
+.underline {
+  text-decoration: underline;
+}
+#login {
+  background-color: #00a3e0;
+  display: none;
+  font-family: 'din', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  min-height: 600px;
+}
+#login img {
+  text-align: center;
+  padding-top: 46.7px;
+  height: 228px;
+  margin: 0px auto;
+  display: block;
+}
+#login h2 {
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: 300;
+  font-size: 33px;
+}
+#login #login-form {
+  background-color: #00a3e0;
+  margin-bottom: 0px;
+  text-align: center;
+}
+#login #login-form input {
+  margin: 0px auto;
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-family: 'din', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  display: block;
+  color: #808080;
+  width: 250px;
+  border: none;
+}
+#login #login-form #user_loggedin {
+  color: white;
+}
+#login #login-form #user_loggedin input {
+  width: 20px;
+  margin-top: 0px;
+  border: 1px solid white;
+  display: inline;
+  margin-bottom: 3px;
+}
+#login #cookie-warning {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+#login #login-failed {
+  text-align: center;
+  display: block;
+  color: white;
+  margin-top: 5px;
+}
+#login #ie {
+  margin-top: 30px;
+  color: white;
+  font-weight: 700;
+  font-size: 4em;
+  text-align: center;
+  line-height: 50px;
+}
+#main {
+  display: none;
+  font-weight: 200;
+  font-family: 'din', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-y: none;
+}
+header {
+  background-color: #00a3e0;
+  width: 100%;
+  height: 46px;
+}
+header img {
+  float: left;
+  height: 31px;
+  padding-left: 7px;
+  padding-top: 8px;
+}
+header h1 {
+  float: left;
+  padding-left: 6px;
+  color: white;
+  font-size: 27px;
+  font-weight: 300;
+  margin-bottom: 0px;
+  line-height: 27px;
+}
+header #username {
+  float: right;
+  padding: 6px 10px 6px 10px;
+  margin-top: 6px;
+  margin-right: 10px;
+  border-radius: 2px;
+  background-color: #00a3e0;
+  color: white;
+  position: relative;
+}
+header .dropdown {
+  float: right;
+}
+header .dropdown ul > li > a {
+  font-family: 'din', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+#overlay {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#overlay #instructions-lightbox,
+#overlay #send-report-lightbox {
+  display: none;
+  z-index: 9999;
+  margin: 0px auto;
+  margin-top: 120px;
+  opacity: 2;
+  color: black;
+  width: 50%;
+  max-width: 600px;
+  padding: 0px 0px 0px 0px;
+  font-weight: 400;
+  background-color: #00a3e0;
+}
+#overlay #instructions-lightbox h2,
+#overlay #send-report-lightbox h2 {
+  padding: 7px 0px 7px 30px;
+  font-size: 20px;
+  line-height: 20px;
+  margin: 0 0 0 0;
+  color: white;
+  font-weight: 300;
+}
+#overlay #instructions-lightbox p,
+#overlay #send-report-lightbox p {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  padding: 10px 30px 0px 30px;
+  line-height: 22px;
+  background-color: white;
+  color: #666;
+}
+#overlay #instructions-lightbox #last-paragraph,
+#overlay #send-report-lightbox #last-paragraph {
+  padding-bottom: 20px;
+}
+#overlay #send-report-lightbox button {
+  margin-top: 15px;
+  background-color: #00a3e0;
+  color: white;
+  border: none;
+  width: 200px;
+  height: 35px;
+}
+#overlay #send-report-lightbox button:hover {
+  background-color: #006d95;
+}
+#content {
+  display: block;
+  position: relative;
+}
+#content #dashboard {
+  width: 170px;
+  background-color: #f0f0f0;
+}
+#content #dashboard #selected a {
+  background-color: #cecece;
+}
+#content #dashboard #selected a:hover {
+  background-color: #cecece;
+  color: #4d4d4d;
+}
+#content #dashboard ul {
+  list-style-type: none;
+  padding-left: 0px;
+  padding-top: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+  display: table;
+}
+#content #dashboard li {
+  margin: 0 0 0 0;
+  padding: 0px;
+  text-align: left;
+  color: #dbdbdb;
+  width: 100%;
+  vertical-align: middle;
+}
+#content #dashboard li > a {
+  display: block;
+  width: 100%;
+}
+#content #dashboard a {
+  color: #4d4d4d;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  text-align: left;
+}
+#content #dashboard a i {
+  display: inline-block;
+  float: right;
+  margin-right: 15px;
+  font-size: 1.1em;
+}
+#content #dashboard #upload-form,
+#content #dashboard #replace-form {
+  margin-bottom: 0px;
+}
+#content #dashboard #upload-input,
+#content #dashboard #replace-input {
+  width: 170px;
+  height: 40px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  position: absolute;
+  cursor: hand;
+  cursor: pointer;
+  visibility: hidden;
+}
+#content #dashboard #upload-input:hover,
+#content #dashboard #replace-input:hover {
+  background-color: blue;
+}
+#content #dashboard .buttons a {
+  cursor: hand;
+  cursor: pointer;
+  padding-left: 17px;
+  width: 153px;
+}
+#content #dashboard .buttons a:hover {
+  background-color: #006d95;
+  color: white;
+  text-decoration: none;
+}
+#content #dashboard .upload-buttons {
+  height: 0px;
+  width: 0px;
+  overflow: hidden;
+}
+#content #dashboard .expand-button {
+  cursor: hand;
+  cursor: pointer;
+}
+#content #dashboard .expand-buttons {
+  display: none;
+  cursor: hand;
+  cursor: pointer;
+}
+#content #dashboard .expand-buttons li {
+  width: 50%;
+  float: left;
+  background-color: #dfdfdf;
+}
+#content #dashboard .expand-buttons a {
+  text-align: center;
+}
+#content #dashboard .expand-buttons a:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #772852;
+}
+#content #dashboard #user-button {
+  cursor: pointer;
+  width: 153px;
+}
+#content #dashboard #user-button:hover {
+  background-color: #006d95;
+}
+#content #dashboard #user-buttons {
+  display: none;
+}
+#content #dashboard #user-buttons li {
+  font-size: 12px;
+}
+#content #dashboard #user-buttons p {
+  color: #505050;
+}
+#content #dashboard #user-buttons #user-info {
+  padding-top: 3px;
+  padding-bottom: 1px;
+  background-color: #dfdfdf;
+}
+#content #dashboard #user-buttons #user-info p {
+  margin-left: 17px;
+  margin-bottom: 0px;
+  padding-bottom: 7px;
+}
+#content #dashboard #user-buttons #user-usage {
+  font-size: 13px;
+  padding-top: 5px;
+}
+#content #file-table {
+  background-color: white;
+  text-align: left;
+  font-size: 14px;
+  position: absolute;
+  top: 0;
+  left: 170px;
+}
+#content #file-table table {
+  table-layout: fixed;
+}
+#content #file-table table #table-format th {
+  background-color: #d5d5d5;
+  border-right: 1px solid #f7f7f7;
+  text-transform: uppercase;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  opacity: 0.9;
+  font-weight: 400;
+  text-indent: 5px;
+}
+#content #file-table table #table-format .last-col {
+  border-right: none;
+}
+#content #file-table table tr {
+  border-bottom: 1px solid #e6e6e6;
+}
+#content #file-table table tr .table-name {
+  width: 50%;
+}
+#content #file-table table tr .table-size {
+  width: 20%;
+}
+#content #file-table table td {
+  border-right: 1px solid #e6e6e6;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  word-wrap: break-word;
+  line-height: 15px;
+}
+#content #file-table table .last-col {
+  border-right: none;
+}
+#content #file-table #table-notification {
+  display: hidden;
+  position: relative;
+  font-weight: 400;
+  opacity: 0.85;
+  border-bottom: 1px solid #d5d5d5;
+}
+#content #file-table #table-notification #table-notification-close {
+  position: absolute;
+  right: 10px;
+  margin-top: 4px;
+  color: white;
+  cursor: hand;
+  cursor: pointer;
+  font-size: 2.5em;
+}
+#content #file-table #table-notification #table-notification-close:hover {
+  text-decoration: none;
+}
+#content #file-table #table-notification p {
+  padding: 10px 30px 10px 10px;
+  margin-bottom: 0px;
+  color: white;
+}
+#content #file-table #table-notification p a {
+  color: white;
+  cursor: hand;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#content #file-table #table-notification #table-upload-file {
+  padding-left: 30px;
+  font-size: 0.95em;
+  padding-top: 0px;
+}
+#content #file-table .success-notification {
+  background-color: #67be65;
+}
+#content #file-table .error-notification {
+  background-color: #eb241b;
+}
+#content #file-table .upload-notification,
+#content #file-table .replace-notification {
+  background-color: #8077af;
+}
+#content #file-table .upload-notification p a:hover,
+#content #file-table .replace-notification p a:hover {
+  background-color: #a299d1;
+  text-decoration: none;
+}
+#content #file-table .upload-notification .upload-choices,
+#content #file-table .replace-notification .upload-choices {
+  font-size: 0.85em;
+}
+#content #file-table .upload-notification .upload-choices a,
+#content #file-table .replace-notification .upload-choices a {
+  font-size: 1.2em;
+}
+#content #file-table .checkbox {
+  padding-left: 15px;
+  padding-right: 7px;
+  padding-top: 7px;
+  width: 20px;
+}
+#content #file-table .checkbox input {
+  margin: 0px auto;
+  padding: 0px 0px 0px 0px;
+}
+#content #file-table .table-list:hover {
+  background-color: #e6e6e6;
+}
+#content #file-table #no-files {
+  display: none;
+  text-align: center;
+  margin-top: 100px;
+  font-weight: 400;
+  font-size: 3em;
+  color: #6B6B6B;
+  line-height: 40px;
+}
+/****************************************************************
+					From jquery.tablesorter
+****************************************************************/
+table.tablesorter thead tr .header {
+  background-image: url(../img/bg.gif);
+  background-repeat: no-repeat;
+  background-position: center right;
+  cursor: pointer;
+}
+table.tablesorter thead tr .headerSortUp {
+  background-image: url(../img/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+  background-image: url(../img/desc.gif);
+}
+#table-checkbox {
+  background-image: none;
+}

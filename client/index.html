@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Omni Converter Web Client</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="../css/normalize.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/omniconverter.css">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+        <script src="../js/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+
+    <div id="login">
+        <img id="login-logo" src="../img/palantirlogo.svg" alt="">
+        <h2>OMNI CONVERTER</h2>
+        <form method="POST" id="login-form">
+            <input type="text" id="server_url" placeholder="Server URL">
+            <input type="text" id="user_email" placeholder="Email">
+            <input type="password" id="user_pw" placeholder="Password">
+        </form>
+        <p id="cookie-warning"></p>
+        <p id="login-failed"></p>
+    </div>
+     
+    <div id="main">
+    <div id="overlay">
+        <div id="instructions-lightbox">
+            <h2>OMNI CONVERTER</h2>
+            <p style="padding-top: 20px;">This system is designed to store directed acyclic graph (DAG) data with the ability to import from and export to a variety of file formats.</p>
+            <p style="padding-bottom:20px;">It supports XML, HTML, TXT, SQL, JSON, and CSV file formats, but be warned, each of these file formats has a very specific way of representing graph data.  Before starting, carefully read the <a href="http://omniconverter.palantir.com/api/#fileformats" class="underline">file format documentation</a> and look at the sample upload files that were linked to in our initial email.<br></p>
+            <h2>INSTRUCTIONS</h2>
+            <p style="padding-top: 20px;">You have been given access to this web based client, an executable Java archive, and a copy of the source code. <strong>Your task is to identify issues with the system as well as suggesting potential solutions.</strong></p>
+            <p>There are no restrictions on how you should be testing the system, nor restrictions on the problems you should be looking for.  However, some problems will be very difficult to identify without inspecting source code.</p>
+            <p id="last-paragraph">Access to the VM you have been assigned will be revoked after 5 days, but you can continue, running the server locally, for as long as you need.  Once you are finished, you should <a href="mailto:servergame-report@palantir.com" class="underline">email us</a> your report.</p>
+        </div>
+    </div>
+    <header>
+        <a href="../client">
+        <img id="header-logo" src="../img/palantirlogo.svg" alt="">
+        <h1>OMNI CONVERTER</h1>
+        </a>
+        <div class="dropdown">
+            <a href="#" id="username" class="dropdown-toggle" data-toggle="dropdown"></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a tabindex="-1" href="#" id="instructions">Instructions</a></li>
+                <li><a tabindex="-1" href="../api" id="api">API Documentation</a></li>
+                <li class="divider"></li>
+                <li><a tabindex="-1" href="#" id="logout">Log out</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="content">
+        <div id="dashboard" class="content-list">
+            <form id="upload-form" method="POST" enctype="mulitpart/form-data">
+                <div class="upload-buttons">
+                    <input id="upload-input" type="file" name="file" size="filesize">
+                </div>
+            </form>
+            <ul>
+                <li class="buttons">
+                    <a class="expand-button">
+                        UPLOAD
+                        <i class="icon-caret-down"></i>
+                    </a>
+                </li>
+                <ul class="expand-buttons upload" id="upload">
+                    <li>
+                        <a>XML</a>
+                    </li>
+                    <li>
+                        <a>HTML</a>
+                    </li>
+                    <li>
+                        <a>JSON</a>
+                    </li>
+                    <li>
+                        <a>TXT</a>
+                    </li>
+                    <li>
+                        <a>CSV</a>
+                    </li>
+                    <li>
+                        <a>SQL</a>
+                    </li>
+                </ul>
+            </ul>
+            <ul>
+                <li class="buttons">
+                    <a class="expand-button">
+                        DOWNLOAD 
+                        <i class="icon-caret-down"></i>
+                    </a>
+                </li>
+                <ul class="expand-buttons download">
+                    <li>
+                        <a>XML</a>
+                    </li>
+                    <li>
+                        <a>HTML</a>
+                    </li>
+                    <li>
+                        <a>JSON</a>
+                    </li>
+                    <li>
+                        <a>TXT</a>
+                    </li>
+                    <li>
+                        <a>CSV</a>
+                    </li>
+                    <li>
+                        <a>SQL</a>
+                    </li>
+                </ul>
+            </ul>
+            <ul>
+                <li class="buttons">
+                    <a class="expand-button">
+                        REPLACE
+                        <i class="icon-caret-down"></i>
+                    </a>
+                </li>
+                <ul class="expand-buttons upload" id="replace">
+                    <li>
+                        <a>XML</a>
+                    </li>
+                    <li>
+                        <a>HTML</a>
+                    </li>
+                    <li>
+                        <a>JSON</a>
+                    </li>
+                    <li>
+                        <a>TXT</a>
+                    </li>
+                    <li>
+                        <a>CSV</a>
+                    </li>
+                    <li>
+                        <a>SQL</a>
+                    </li>
+                </ul>
+            </ul>
+            <ul>
+                <li class="buttons">
+                    <a href="#" id="delete-button">
+                        DELETE
+                    </a>
+                </li>
+            </ul>
+        <ul id="user-data">
+            <li class="buttons">
+                <a class="expand-button" id="user-button">
+                    USER STATISTICS 
+                    <i class="icon-caret-down"></i>
+                </a>
+            </li>
+            <ul id="user-buttons">
+                <li id="user-info"></li>
+            </ul>
+        </ul>
+        </div>
+
+        <div id="file-table" class="content-list">
+            <div id="notification-list"></div>
+            <table class="tablesorter" id="file-list-table" width="100%" border="0" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr id="table-format">
+                        <th class="checkbox" id="table-checkbox">
+                            <input id="checkbox-toggle-button" type="checkbox">
+                        </th>
+                        <th class="table-name">
+                            Name
+                        </th>
+                        <th class="table-size">
+                            Size
+                        </th>
+                        <th class="last-col">
+                            Last modified
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+            <div id="no-files"></div>
+        </div>
+    </div>
+        
+    </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/jquery.cookie.js"></script>
+        <script src="../js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script type="text/javascript" src="http://jqueryrotate.googlecode.com/svn/trunk/jQueryRotate.js"></script>
+        <script src="../js/jquery.form.min.js"></script>
+        <script src="../js/jquery.tablesorter.min.js"></script>
+        <script src="../js/omniconverter.js"></script>
+    </body>
+</html>
