@@ -75,6 +75,14 @@ function toggleCheckboxes(source) {
         else
             checkboxes[i].checked = false;
     }
+	if($('input[name=list]:checked').length==0) {
+		$('#select_count').addClass('hidden'); return
+	}
+	else{
+		$("#selected_files").html($('input[name=list]:checked').length);
+		$('#select_count').removeClass('hidden');
+	}
+	console.log($('input[name=list]:checked').length);
 }
 
 function setAuthKey(username,password) {
@@ -197,6 +205,7 @@ function downloadFail(html) {
 function getDocList() {
 	api("/v1/documents","GET",null,docListSuccessFunction,function(html) {showError(html)});
 	updateUsage();
+	
 }
 
 function docListSuccessFunction(html) {
@@ -210,7 +219,7 @@ function docListSuccessFunction(html) {
 		htmlString += '<tbody>';
 		for (var i=0; i<html.documents.length; i++) {
 			var date = new Date(html.documents[i].modifiedDate*1000);
-			console.log(html.documents[i].modifiedDate*1000);
+			//console.log(html.documents[i].modifiedDate*1000);
 			dateString = date.getFullYear().toString() + '-' + ('0'+ (date.getMonth()+1)).slice(-2) + '-' +
 							('0' + (date.getDate())).slice(-2) + ' ' + date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2);
 			htmlString = htmlString + '<tr class="table-list">' +
@@ -218,9 +227,9 @@ function docListSuccessFunction(html) {
 			'<td class="table-name">' + html.documents[i].name + '</td>' +
 			'<td class="table-type">' + html.documents[i].size + ' B</td>' +
 			'<td class="last-col">' + dateString + '</td>' +
-			'<td><a class="text-danger" href="#" onclick="javascript: deleteDocById('+ html.documents[i].id + 
+			'<td style="width:40px;"><a class="text-danger" href="#" onclick="javascript: deleteDocById('+ html.documents[i].id + 
 			')"><span class="fa fa-trash-o"></span></a></td>' +
-			'<td><div class="btn-group">'+
+			'<td style="width:40px;"><div class="btn-group">'+
 			 	'<a href="#" type="button" class="dropdown-toggle text-info" title="Replace this File" data-toggle="dropdown">' +
 				 '<span class="fa fa-clipboard"></span>  ' +
 			  '</a>' +
@@ -239,7 +248,7 @@ function docListSuccessFunction(html) {
 					')"><span class="fa fa-tasks"></span> &nbsp; &nbsp; <span class="format">SQL</span></a></li>'+
 			  '</ul>' +
 			'</div></td>' +
-			'<td><div class="btn-group">'+
+			'<td style="width:40px;"><div class="btn-group">'+
 			 	'<a href="#" type="button" class="dropdown-toggle text-success" title="Download File" data-toggle="dropdown">' +
 				 '<span class="fa fa-download"></span>  ' +
 			  '</a>' +
@@ -264,6 +273,23 @@ function docListSuccessFunction(html) {
 		$('.no-files').hide();
 		$('#doc-table').append(htmlString);
 		$('#doc-table').show();
+		$('input[name=list]').change(function(){
+			if($('input[name=list]:checked').length==0) {
+				$('#select_count').addClass('hidden'); return
+			}
+			else{
+				$("#selected_files").html($('input[name=list]:checked').length);
+				$('#select_count').removeClass('hidden');
+			}
+			console.log($('input[name=list]:checked').length);
+		});
+		if($('input[name=list]:checked').length==0) {
+			$('#select_count').addClass('hidden'); return
+		}
+		else{
+			$("#selected_files").html($('input[name=list]:checked').length);
+			$('#select_count').removeClass('hidden');
+		}
 		/*$('.table-sorted').tablesorter({
 			headers: {
 				0: {
@@ -608,3 +634,4 @@ function getParameterByName(name) {
     var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
+
